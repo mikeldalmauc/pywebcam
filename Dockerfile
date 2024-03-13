@@ -22,14 +22,8 @@ ENV NAME World
 
 # -- RUN 
 
-# Run Jupyter Notebook when the container launches
-# CMD ["python", "-m", "notebook"]
-
-# CMD ["jupyter", "notebook", "--ip='0.0.0.0'", "--port=8888", " --no-browser", "--allow-root"]
-
 # Run the Python script
 # CMD ["python", "./webcam/camera.py"]
 
 # RUN waiting process
-
 CMD ["/bin/bash", "-c", "while true; do echo 'Hit CTRL+C'; sleep 60; done"]
