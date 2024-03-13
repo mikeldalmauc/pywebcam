@@ -1,0 +1,15 @@
+version: '2.3'
+
+services:
+  webcam:
+    image: webcam
+    container_name: webcam
+    working_dir: /webcam
+    build:
+      context: .
+    ports:
+      - 8888:8888
+    volumes:
+      - ./webcam:/webcam
+    privileged: true
+    command: python -m notebook --ip='0.0.0.0' --port=8888 --no-browser --allow-root
