@@ -1,23 +1,12 @@
-version: '3.4'
+version: '2.3'
 
 services:
-  express:
-    image: express
-    build:
-      context: webapp/.
-      dockerfile: Dockerfile
-    environment:
-      NODE_ENV: production
-    ports:
-      - 3000:3000
-
   webcam:
     image: webcam
     container_name: webcam
     working_dir: /webcam
     build:
       context: webcam/.
-      dockerfile: Dockerfile
     ports:
       - 8888:8888
     volumes:

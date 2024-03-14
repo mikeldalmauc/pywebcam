@@ -31,6 +31,14 @@ Un solucción es utilizar un servicio de camara por IP. Esta solucción tiene la
 cap = cv2.VideoCapture('http://192.168.56.1:56000/mjpeg')
 ```
 
+## Entorno de desarrollo
+
+### Limitaciónes
+#### Open CV
+
+Algunas funciones de openCV tales, como las que muestran imagenes `pe: imshow`, tienen problemas integrandose con docker y hacen fallar el kernel. La solución a esto parte
+por o utilizar linux para entorno de desarollo o hacer algún workaoround como es, guardar las imagenes o mostararlas con librerías como [matplotlib](https://stackoverflow.com/questions/46236180/opencv-imshow-will-cause-jupyter-notebook-crash).
+
 ## Entorno de producción
 
 De cara a la puesta en producción, se ha de liberar la aplicación de todas las dependencias de desarrollo que no sean necesarias tales como jupyter notebook.
