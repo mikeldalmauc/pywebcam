@@ -1,16 +1,221 @@
-version: '2.3'
+version: '4.4'
 
 services:
-  webcam:
-    image: webcam
-    container_name: webcam
-    working_dir: /webcam
+
+  pygame1:
+    image: pygame1
+    container_name: pygame1
     build:
-      context: webcam/.
+      context: .
     ports:
-      - 8888:8888
+      - 8888:22
+    environment:
+      - CONTAINER_NAME=pygame1
     volumes:
-      - ./webcam:/webcam
-    privileged: true
-    # Este comando se ejecuta para desarrollo con jupyter notebook
-    command: python -m notebook --ip='0.0.0.0' --port=8888 --no-browser --allow-root
+      - ./ganadores:/ganadores
+      - ./muertos:/muertos
+      - ./src:/home/player
+
+  # pygame1:
+  #   image: pygame
+  #   container_name: pygame1
+  #   ports:
+  #     - 30001:22
+  #   volumes:
+  #     - ./ganadores:/ganadores
+  #     - ./muertos:/muertos
+  #     - ./c1:/die
+  #   environment:
+  #     - CONTAINER_NAME=pygame1
+
+  # pygame2:
+  #   image: pygame
+  #   container_name: pygame2
+  #   ports:
+  #     - 30002:22
+  #   volumes:
+  #     - ./ganadores:/ganadores
+  #     - ./muertos:/muertos
+  #     - ./c2:/die
+  #   environment:
+  #     - CONTAINER_NAME=pygame2
+
+  # pygame3:
+  #   image: pygame
+  #   container_name: pygame3
+  #   ports:
+  #     - 30003:22
+  #   volumes:
+  #     - ./ganadores:/ganadores
+  #     - ./muertos:/muertos
+  #     - ./c3:/die
+  #   environment:
+  #     - CONTAINER_NAME=pygame3
+  
+  # pygame4:
+  #   image: pygame
+  #   container_name: pygame4
+  #   ports:
+  #     - 30004:22
+  #   volumes:
+  #     - ./ganadores:/ganadores
+  #     - ./muertos:/muertos
+  #     - ./c4:/die
+  #   environment:
+  #     - CONTAINER_NAME=pygame4
+      
+  # pygame5:
+  #   image: pygame
+  #   container_name: pygame5
+  #   ports:
+  #     - 30005:22
+  #   volumes:
+  #     - ./ganadores:/ganadores
+  #     - ./muertos:/muertos
+  #     - ./c5:/die
+  #   environment:
+  #     - CONTAINER_NAME=pygame5
+
+  # pygame6:
+  #   image: pygame
+  #   container_name: pygame6
+  #   ports:
+  #     - 30006:22
+  #   volumes:
+  #     - ./ganadores:/ganadores
+  #     - ./muertos:/muertos
+  #     - ./c6:/die
+  #   environment:
+  #     - CONTAINER_NAME=pygame6
+
+  # pygame7:
+  #   image: pygame
+  #   container_name: pygame7
+  #   ports:
+  #     - 30007:22
+  #   volumes:
+  #     - ./ganadores:/ganadores
+  #     - ./muertos:/muertos
+  #     - ./c7:/die
+  #   environment:
+  #     - CONTAINER_NAME=pygame7
+
+  # pygame8:
+  #   image: pygame
+  #   container_name: pygame8
+  #   ports:
+  #     - 30008:22
+  #   volumes:
+  #     - ./ganadores:/ganadores
+  #     - ./muertos:/muertos
+  #     - ./c8:/die
+  #   environment:
+  #     - CONTAINER_NAME=pygame8
+
+  # pygame9:
+  #   image: pygame
+  #   container_name: pygame9
+  #   ports:
+  #     - 30009:22
+  #   volumes:
+  #     - ./ganadores:/ganadores
+  #     - ./muertos:/muertos
+  #     - ./c9:/die
+  #   environment:
+  #     - CONTAINER_NAME=pygame9
+
+  # pygame10:
+  #   image: pygame
+  #   container_name: pygame10
+  #   ports:
+  #     - 30010:22
+  #   volumes:
+  #     - ./ganadores:/ganadores
+  #     - ./muertos:/muertos
+  #     - ./c10:/die
+  #   environment:
+  #     - CONTAINER_NAME=pygame10
+
+  # pygam11:
+  #   image: pygame
+  #   container_name: pygame11
+  #   ports:
+  #     - 30003:22
+  #   volumes:
+  #     - ./ganadores:/ganadores
+  #     - ./muertos:/muertos
+  #     - ./c11:/die
+  #   environment:
+  #     - CONTAINER_NAME=pygame11
+
+  # pygame12:
+  #   image: pygame
+  #   container_name: pygame12
+  #   ports:
+  #     - 30012:22
+  #   volumes:
+  #     - ./ganadores:/ganadores
+  #     - ./muertos:/muertos
+  #     - ./c12:/die
+  #   environment:
+  #     - CONTAINER_NAME=pygame12
+
+  # pygame13:
+  #   image: pygame
+  #   container_name: pygame13
+  #   ports:
+  #     - 30013:22
+  #   volumes:
+  #     - ./ganadores:/ganadores
+  #     - ./muertos:/muertos
+  #     - ./c13:/die
+  #   environment:
+  #     - CONTAINER_NAME=pygame13
+
+  # pygame14:
+  #   image: pygame
+  #   container_name: pygame14
+  #   ports:
+  #     - 30014:22
+  #   volumes:
+  #     - ./ganadores:/ganadores
+  #     - ./muertos:/muertos
+  #     - ./c14:/die
+  #   environment:
+  #     - CONTAINER_NAME=pygame14
+
+  # pygame15:
+  #   image: pygame
+  #   container_name: pygame15
+  #   ports:
+  #     - 30015:22
+  #   volumes:
+  #     - ./ganadores:/ganadores
+  #     - ./muertos:/muertos
+  #     - ./c15:/die
+  #   environment:
+  #     - CONTAINER_NAME=pygame15
+  
+  # pygame16:
+  #   image: pygame
+  #   container_name: pygame16
+  #   ports:
+  #     - 30016:22
+  #   volumes:
+  #     - ./ganadores:/ganadores
+  #     - ./muertos:/muertos
+  #     - ./c16:/die
+  #   environment:
+  #     - CONTAINER_NAME=pygame16
+
+  # pygame17:
+  #   image: pygame
+  #   container_name: pygame17
+  #   ports:
+  #     - 30017:22
+  #   volumes:
+  #     - ./ganadores:/ganadores
+  #     - ./muertos:/muertos
+  #     - ./c17:/die
+  #   environment:
+  #     - CONTAINER_NAME=pygame17

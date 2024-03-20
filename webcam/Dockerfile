@@ -1,29 +1,35 @@
 # Use a base image with Python and OpenCV
 FROM python:3
 
-
+# Terminal environment for colored output
+ENV TERM=xterm-256color
+RUN echo "PS1='\e[92m\u\e[0m@\e[94m\h\e[0m:\e[35m\w\e[0m# '" >> /root/.bashrc
 
 # Install dependencies
 RUN apt-get update
+RUN apt-get install -y openssh-server sudo
 
-RUN apt-get install -y ffmpeg libsm6 libxext6
+# SSH  conf------
+RUN mkdir /var/run/sshd
+RUN echo 'root:redhat' | chpasswd
+EXPOSE 22
 
-RUN adduser appuser
-USER appuser
+# Limit the number of simultaneous connections
+RUN sed -i 's/^#MaxSessions.*/MaxSessions 1/' /etc/ssh/sshd_config
+RUN sed -i 's/^#MaxStartups.*/MaxStartups 1/' /etc/ssh/sshd_config
 
-# Install python dependencies
-COPY requirements.txt requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+RUN echo player           -       maxlogins 1 >> /etc/security/limits.conf
 
-EXPOSE 8888
+# Set app user copy code as appuser so it belogs to app user and change to workdir 
+RUN useradd -rm -d /home/player -s /bin/bash -u 1010 player
+RUN echo "PS1='\e[92m\u\e[0m@\e[94m\h\e[0m:\e[35m\w\e[0m# '" >> /home/player/.bashrc
+RUN echo 'player:player' | chpasswd
 
-# Define environment variable
-ENV NAME World
+COPY src/game.py /home/player/ 
+WORKDIR /home/player
 
-# -- RUN 
+RUN chmod 715 /home/player/game.py
 
-# Run the Python script
-# CMD ["python", "./webcam/camera.py"]
+USER root
 
-# RUN waiting process
-CMD ["/bin/bash", "-c", "while true; do echo 'Hit CTRL+C'; sleep 60; done"]
+CMD ["/usr/sbin/sshd", "-D"]
