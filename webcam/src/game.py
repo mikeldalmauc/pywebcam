@@ -302,22 +302,15 @@ class Game:
 
         
     def increase_failures(self):
-        
             
-        if self.current_stage == 1 and self.failures < 1:
+        if self.failures < 3:
             map_face("wound")
-            self.failures += 1
-        elif self.current_stage == 2 and self.failures < 2:
-            map_face("wound")
-            self.failures += 1
-        elif self.current_stage == 3 and self.failures < 3:
-            map_face("wound")
-            self.failures += 1
-        elif self.current_stage > 3:
-            self.failures += 1
-            
-        for i in range(0, 4 - self.failures):
+
+        for i in range(0, 3 - self.failures):
             map_face("heart")
+
+        self.failures += 1
+
 
     def execute_pushiment(self):
         if self.failures == 1:

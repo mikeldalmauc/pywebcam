@@ -2,31 +2,32 @@ version: '4.4'
 
 services:
 
-  pygame1:
-    image: pygame1
-    container_name: pygame1
-    build:
-      context: .
-    ports:
-      - 8888:22
-    environment:
-      - CONTAINER_NAME=pygame1
-    volumes:
-      - ./ganadores:/ganadores
-      - ./muertos:/muertos
-      - ./src:/home/player
-
   # pygame1:
-  #   image: pygame
+  #   image: pygame1
   #   container_name: pygame1
+  #   build:
+  #     context: .
   #   ports:
-  #     - 30001:22
+  #     - 8888:22
+  #   environment:
+  #     - CONTAINER_NAME=pygame1
   #   volumes:
   #     - ./ganadores:/ganadores
   #     - ./muertos:/muertos
-  #     - ./c1:/die
-  #   environment:
-  #     - CONTAINER_NAME=pygame1
+  #     - ./c0:/die
+  #     - ./src:/home/player
+
+  pygame1:
+    image: pygame
+    container_name: pygame1
+    ports:
+      - 30001:22
+    volumes:
+      - ./ganadores:/ganadores
+      - ./muertos:/muertos
+      - ./c1:/die
+    environment:
+      - CONTAINER_NAME=pygame1
 
   # pygame2:
   #   image: pygame
@@ -140,7 +141,7 @@ services:
   #   image: pygame
   #   container_name: pygame11
   #   ports:
-  #     - 30003:22
+  #     - 30011:22
   #   volumes:
   #     - ./ganadores:/ganadores
   #     - ./muertos:/muertos

@@ -26,9 +26,17 @@ RUN echo "PS1='\e[92m\u\e[0m@\e[94m\h\e[0m:\e[35m\w\e[0m# '" >> /home/player/.ba
 RUN echo 'player:player' | chpasswd
 
 COPY src/game.py /home/player/ 
+COPY src/compile.py /home/player/ 
+RUN python /home/player/compile.py
+
+RUN rm /home/player/compile.py
+RUN rm /home/player/game.py
+RUN cp -R /home/player/__pycache__/* /home/player/
+RUN rm -r /home/player/__pycache__
+
 WORKDIR /home/player
 
-RUN chmod 715 /home/player/game.py
+RUN echo 'python game.cpython-312.pyc' >> /home/player/.bashrc
 
 USER root
 
